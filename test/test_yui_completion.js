@@ -10,8 +10,8 @@ exports['test YUI completion'] = function() {
   });
 }
 
-exports['test YUI().use completion'] = function() {
-  util.assertCompletion("YUI().u", {
+exports['test AUI().use completion'] = function() {
+  util.assertCompletion("AUI().u", {
     "start":{"line":0,"ch":6},
     "end":{"line":0,"ch":7},
     "isProperty":true,
@@ -21,7 +21,7 @@ exports['test YUI().use completion'] = function() {
 }
 
 exports['test Y.one completion'] = function() {
-  util.assertCompletion("YUI().use('', function(Y) { Y.one", {
+  util.assertCompletion("AUI().use('', function(Y) { Y.one", {
     "start":{"line":0,"ch":30},
     "end":{"line":0,"ch":33},
     "isProperty":true,
@@ -32,7 +32,7 @@ exports['test Y.one completion'] = function() {
 
 exports['test !proto completion'] = function() {
 	// check methods of Anim.anim
-	util.assertCompletion("YUI().use('', function(Y) { var anim = new Y.Anim().du", {
+	util.assertCompletion("AUI().use('', function(Y) { var anim = new Y.Anim().du", {
 	    "start":{"line":0,"ch":52},
 	    "end":{"line":0,"ch":54},
 	    "isProperty":true,
@@ -40,7 +40,7 @@ exports['test !proto completion'] = function() {
 	    "origin":"yui3"}]
 	});
 	//  Anim.anim extends base.Base
-	util.assertCompletion("YUI().use('', function(Y) { var anim = new Y.Anim().unpl", {
+	util.assertCompletion("AUI().use('', function(Y) { var anim = new Y.Anim().unpl", {
 	    "start":{"line":0,"ch":52},
 	    "end":{"line":0,"ch":56},
 	    "isProperty":true,
