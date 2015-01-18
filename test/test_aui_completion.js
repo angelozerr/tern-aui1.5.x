@@ -13,6 +13,7 @@ var util = require("./util");
     "start":{"line":0,"ch":48},
     "end":{"line":0,"ch":52},
     "isProperty":true,
+    "isObjectKey":false,
     "completions":[{"name":"getEditor","type":"fn()","origin":"aui1.5.x"}]
   });*//*  
 }*/
