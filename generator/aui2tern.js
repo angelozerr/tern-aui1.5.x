@@ -19,7 +19,7 @@
   }
   
   var initialize = function(ternDef) {
-    ternDef["AUI"] = "fn() -> +yui.YUI";
+    ternDef["AUI"] = "YUI";
   }
   
   var isClass = function(entry) {
