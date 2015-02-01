@@ -12,6 +12,7 @@
       "initialize" : initialize,
       "isClass" : isClass,
       "getType" : getType,
+      "baseURL" : "http://alloyui.com/versions/1.5.x/api/",
       "isSubModule": true
     };
     var generator = new yuidoc2tern.Generator(options);
