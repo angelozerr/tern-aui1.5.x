@@ -1,7 +1,7 @@
 var util = require("./util");
 
 exports['test Y.AutoComplete completion'] = function() {
-  // check AceEditor
+  // check AutoComplete
   util.assertCompletion("AUI().use('', function(Y) { new Y.A", {
     "name":"AutoComplete",
     "type":"fn(config: {})",
@@ -26,34 +26,10 @@ exports['test Y.AutoComplete completion'] = function() {
   });  
 }
 
-// see https://github.com/angelozerr/tern-aui2.0.x/issues/7
-/*exports['test Y.AceEditor extends Widget completion'] = function() {
-  
-  // Widget of YUI3 provides render, AceEditor inherits from this methods.
-  // check methods of AceEditor
-  util.assertCompletion("YUI().use('', function(Y) { new Y.AceEditor({}).r", {
-    "start":{"line":0,"ch":48},
-    "end":{"line":0,"ch":49},
-    "isProperty":true,
-    "isObjectKey":false,
-    "completions":[{"name":"render","type":"fn(parentNode: yui.Object)","origin":"yui3"}
-                  ]
-  });    
-
-  util.assertCompletion("YUI().use('', function(Y) { var editor = new Y.AceEditor({}); editor.r", {
-    "start":{"line":0,"ch":69},
-    "end":{"line":0,"ch":70},
-    "isProperty":true,
-    "isObjectKey":false,
-    "completions":[{"name":"render","type":"fn(parentNode: yui.Object)","origin":"yui3"}
-                  ]
-  }); 
-}*/
-
 // see https://github.com/angelozerr/tern-aui2.0.x/issues/8
-exports['test Y.AceEditor Config Object Literal'] = function() {
+exports['test Y.AutoComplete Config Object Literal'] = function() {
   
-  util.assertCompletion("YUI().use('', function(Y) { new Y.AutoComplete({", {
+  util.assertCompletion("AUI().use('', function(Y) { new Y.AutoComplete({", {
     "start":{"line":0,"ch":48},
     "end":{"line":0,"ch":48},
     "isProperty":true,
@@ -61,11 +37,19 @@ exports['test Y.AceEditor Config Object Literal'] = function() {
     "completions":[{"name":"alwaysShowContainer","type":"bool","origin":"aui1.5.x"},
                    {"name":"applyLocalFilter","type":"bool","origin":"aui1.5.x"},
                    {"name":"autoHighlight","type":"bool","origin":"aui1.5.x"},
+                   {"name":"boundingBox","type":"string","origin":"yui3"},
                    {"name":"button","type":"bool","origin":"aui1.5.x"},
+                   {"name":"contentBox","type":"string","origin":"yui3"},
+                   {"name":"cssClass","type":"string","origin":"aui1.5.x"},
                    {"name":"dataSource","type":"yui.Object","origin":"aui1.5.x"},
                    {"name":"dataSourceType","type":"string","origin":"aui1.5.x"},
                    {"name":"delimChar","type":"string","origin":"aui1.5.x"},
+                   {"name":"disabled","type":"bool","origin":"yui3"},
+                   {"name":"focused","type":"bool","origin":"yui3"},
                    {"name":"forceSelection","type":"bool","origin":"aui1.5.x"},
+                   {"name":"height","type":"string","origin":"yui3"},
+                   {"name":"hideClass","type":"string","origin":"aui1.5.x"},
+                   {"name":"id","type":"string","origin":"yui3"},
                    {"name":"input","type":"string","origin":"aui1.5.x"},
                    {"name":"matchKey","type":"string","origin":"aui1.5.x"},
                    {"name":"maxResultsDisplayed","type":"number","origin":"aui1.5.x"},
@@ -75,15 +59,35 @@ exports['test Y.AceEditor Config Object Literal'] = function() {
                    {"name":"queryMatchCase","type":"bool","origin":"aui1.5.x"},
                    {"name":"queryMatchContains","type":"bool","origin":"aui1.5.x"},
                    {"name":"queryQuestionMark","type":"bool","origin":"aui1.5.x"},
+                   {"name":"render","type":"bool","origin":"aui1.5.x"},
+                   {"name":"rendered","type":"bool","origin":"yui3"},
                    {"name":"schema","type":"yui.Object","origin":"aui1.5.x"},
                    {"name":"schemaType","type":"string","origin":"aui1.5.x"},
+                   {"name":"srcNode","type":"string","origin":"yui3"},
+                   {"name":"strings","type":"yui.Object","origin":"yui3"},
                    {"name":"suppressInputUpdate","type":"bool","origin":"aui1.5.x"},
+                   {"name":"tabIndex","type":"number","origin":"yui3"},
                    {"name":"typeAhead","type":"bool","origin":"aui1.5.x"},
                    {"name":"typeAheadDelay","type":"number","origin":"aui1.5.x"},
-                   {"name":"uniqueName","type":"string","origin":"aui1.5.x"}
+                   {"name":"uniqueName","type":"string","origin":"aui1.5.x"},
+                   {"name":"useARIA","type":"bool","origin":"aui1.5.x"},
+                   {"name":"visible","type":"bool","origin":"yui3"},
+                   {"name":"width","type":"string","origin":"yui3"}
+                  ]
+  });    
+
+  util.assertCompletion("AUI().use('', function(Y) { new Y.AutoComplete({a", {
+    "start":{"line":0,"ch":48},
+    "end":{"line":0,"ch":49},
+    "isProperty":true,
+    "isObjectKey":true,
+    "completions":[{"name":"alwaysShowContainer","type":"bool","origin":"aui1.5.x"},
+                   {"name":"applyLocalFilter","type":"bool","origin":"aui1.5.x"},
+                   {"name":"autoHighlight","type":"bool","origin":"aui1.5.x"}                   
                   ]
   });    
 
 }
+
 
 if (module == require.main) require("test").run(exports);

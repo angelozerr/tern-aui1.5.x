@@ -63,15 +63,13 @@
     <h1>Demo with AlloyUI Tern plugin </h1>
 	<p>See <a href="https://github.com/angelozerr/tern-aui1.5.x">https://github.com/angelozerr/tern-aui1.5.x</a> for more infos.</p>    
     <form><textarea id="code" name="code">Y //<-Ctrl+Space shows YUI
-AUI().use(
-  'aui-ace-editor',
-  function(Y) {
-    new Y.Anim()
-    new Y.AceEditor(
+UI().use(
+  'aui-autocomplete',
+  function(A) {
+    new A.AutoComplete(
       {
-        boundingBox: '#myEditor',
-        mode: 'xml',
-        value: '<body id="content"></body>'
+        contentBox: '#myAutoComplete',
+        dataSource: ['America', 'Europe', 'Asia']
       }
     ).render();
   }
