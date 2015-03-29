@@ -61,19 +61,29 @@
   <body>
     
     <h1>Demo with AlloyUI Tern plugin </h1>
-	<p>See <a href="https://github.com/angelozerr/tern-aui1.5.x">https://github.com/angelozerr/tern-aui1.5.x</a> for more infos.</p>    
+	<p>See <a href="https://github.com/angelozerr/tern-aui1.5.x">https://github.com/angelozerr/tern-aui1.5.x</a> for more infos.</p>  
     <form><textarea id="code" name="code">Y //<-Ctrl+Space shows YUI
-UI().use(
-  'aui-autocomplete',
-  function(A) {
-    new A.AutoComplete(
-      {
-        contentBox: '#myAutoComplete',
-        dataSource: ['America', 'Europe', 'Asia']
-      }
-    ).render();
-  }
-);
+AUI().use('node', function (Y) {
+    var helloWorld = function(e) {
+    	//<-Ctrl+Space shows e
+    	e. //<-Ctrl+Space shows target, ...
+    	e.target. //<-Ctrl+Space shows setHTML
+    	
+        e.target.setHTML("<p>Hello World!</p>");
+        Y.one('#container').addClass('hello');
+    }
+
+    var node = Y.one("#container");
+	
+    node.on("click", helloWorld);
+
+    var interceptLink = function(e) {
+        e.preventDefault();
+        Y.one('.message').setStyle('visibility', 'visible');
+    }
+
+    Y.one('#secondA').on("click", interceptLink);
+});
 </textarea></form>
     <script type="text/javascript">
        
