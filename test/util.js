@@ -36,7 +36,7 @@ function createServer(defs) {
 	return server;
 }
 
-exports.assertCompletion = function(text, expected, name) {
+exports.assertCompletion = function(text, expected, name, substraction) {
 	var defs = [];
 	var defNames = ["ecma5", "browser"]; 
 	if (defNames) {
@@ -46,14 +46,14 @@ exports.assertCompletion = function(text, expected, name) {
 		}
 	}
 	var queryOptions = defaultQueryOptions;
-
+	if (!substraction) substraction = 0;
 	var server = createServer(defs);
 	server.addFile("test1.js", text);
 	server.request({
 		query : {
 			type: "completions",
 			file: "test1.js",
-			end: text.length,
+			end: text.length - substraction,
 			types: queryOptions.types,
 			docs: queryOptions.docs,
 			urls: queryOptions.urls,
