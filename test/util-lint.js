@@ -3,6 +3,7 @@
 var fs = require("fs"), path = require("path"), tern = require("tern"), assert = require('assert');
 require("../tern-lint/lint.js");
 require("../yui3.js");
+require("../aui1.5.x.js");
 
 var projectDir = path.resolve(__dirname, "..");
 var resolve = function(pth) {
@@ -28,7 +29,8 @@ var createServer = exports.createServer = function(defNames, options) {
   }
   var plugins = {
     "lint" : options ? options : {},
-    "yui3": {}
+    "yui3": {},
+    "aui1.5.x": {}
   };
   var server = new tern.Server({
     plugins : plugins,

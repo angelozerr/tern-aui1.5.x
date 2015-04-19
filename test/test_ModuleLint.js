@@ -1,5 +1,7 @@
 var util = require("./util-lint");
 
+var util = require("./util-lint");
+
 exports['test YUI module validation'] = function() {
   
   // Unknown module 'XXX'
@@ -13,7 +15,12 @@ exports['test YUI module validation'] = function() {
   });
   
   // known module
-  util.assertLint("YUI().use('node', function(Y) {});", {
+  util.assertLint("YUI().use('anim', function(Y) {});", {
+          messages : []
+  });
+  
+  // known submodule
+  util.assertLint("YUI().use('anim-color', function(Y) {});", {
           messages : []
   });
   
@@ -26,6 +33,19 @@ exports['test YUI module validation'] = function() {
     ]
   });
   
+}
+
+exports['test AlloyUI module validation'] = function() {
+  
+  // known module
+  util.assertLint("YUI().use('aui-tree', function(Y) {});", {
+          messages : []
+  });
+  
+  // known submodule
+  util.assertLint("YUI().use('aui-tree-data', function(Y) {});", {
+          messages : []
+  });
 }
 
 if (module == require.main) require("test").run(exports);
