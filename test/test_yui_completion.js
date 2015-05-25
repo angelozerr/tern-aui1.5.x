@@ -6,8 +6,7 @@ exports['test YUI completion'] = function() {
 	"end":{"line":0,"ch":1},
     "isProperty":false,
     "isObjectKey":false,
-    "completions":[{"name":"YUI","type":"fn() -> yui.YUI",
-    "origin":"yui3"}]
+    "completions":[{"name":"YUI","type":"fn(config?: yui.config) -> yui.YUI","origin":"yui3"}]
   });
 }
 
@@ -17,7 +16,7 @@ exports['test AUI completion'] = function() {
     "end":{"line":0,"ch":2},
     "isProperty":false,
     "isObjectKey":false,
-    "completions":[{"name":"AUI","type":"fn() -> yui.YUI","origin":"aui1.5.x"}]
+    "completions":[{"name":"AUI","type":"fn(config?: yui.config) -> yui.YUI","origin":"aui1.5.x"}]
   });
 }
 
