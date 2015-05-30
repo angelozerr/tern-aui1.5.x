@@ -23425,16 +23425,8 @@
        "submodule": "yui-log"
       }
      },
-     "YUI_config": {
-      "!type": "+yui.Object",
-      "!url": "http://yuilibrary.com/yui/docs/api/classes/YUI.html#property_YUI_config",
-      "!doc": "Page-level config applied to all YUI instances created on the\ncurrent page. This is applied after `YUI.GlobalConfig` and before\nany instance-level configuration.",
-      "!data": {
-       "submodule": "yui-base"
-      }
-     },
      "applyConfig": {
-      "!type": "fn(o: +yui.Object)",
+      "!type": "fn(o: +yui.config)",
       "!url": "http://yuilibrary.com/yui/docs/api/classes/YUI.html#method_applyConfig",
       "!doc": "Applies a new configuration object to the config of this YUI instance. This\nwill merge new group/module definitions, and will also update the loader\ncache if necessary. Updating `Y.config` directly will not update the cache.",
       "!data": {
@@ -23543,7 +23535,7 @@
      }
     },
     "applyConfig": {
-     "!type": "fn(o: +yui.Object)",
+     "!type": "fn(o: +yui.config)",
      "!url": "http://yuilibrary.com/yui/docs/api/classes/YUI.html#method_applyConfig",
      "!doc": "Applies a configuration to all YUI instances in this execution context.\n\nThe main use case for this method is in \"mashups\" where several third-party\nscripts need to write to a global YUI config, but cannot share a single\ncentrally-managed config object. This way they can all call\n`YUI.applyConfig({})` instead of overwriting the single global config.",
      "!data": {
@@ -24563,7 +24555,15 @@
    }
   }
  },
- "YUI": "yui.YUI"
+ "YUI": "yui.YUI",
+ "YUI_config": {
+  "!type": "+yui.config",
+  "!url": "http://yuilibrary.com/yui/docs/api/classes/YUI.html#property_YUI_config",
+  "!doc": "Page-level config applied to all YUI instances created on the\ncurrent page. This is applied after `YUI.GlobalConfig` and before\nany instance-level configuration.",
+  "!data": {
+   "submodule": "yui-base"
+  }
+ }
 };
     
 })
