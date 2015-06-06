@@ -2,27 +2,27 @@ var yuidoc2tern = require("../generator/yuidoc2tern"), assert = require('assert'
 
 var assertExtractType = function (yuiType, expected) {
   var type = yuidoc2tern.extractYUIType(yuiType);
-  assert.equal(type, expected);
+  assert.deepEqual(type, expected);
 }
 
 exports['test extract type'] = function() {
   assertExtractType(null, null);
-  assertExtractType('Anim', 'Anim');
-  assertExtractType('Any|Object', 'Any');
-  assertExtractType('Any | Object', 'Any');
-  assertExtractType('{Any}', 'Any');
-  assertExtractType('{ Number }', 'Number');
-  assertExtractType('{ArrayList|Widget}', 'ArrayList'); 
-  assertExtractType('{string: boolean}', 'string');
-  assertExtractType('{Object} the values are HTML strings', 'Object');
-  assertExtractType('{null}', null);
-  assertExtractType('Object*', 'Object');
-  assertExtractType('Number | false', 'Number');
-  assertExtractType('Number/false', 'Number');
-  assertExtractType('Number[]', 'Number[]');
-  assertExtractType('Number[]|Node', 'Number[]');
-  assertExtractType('string| {searchExp: string, replaceStr: string}', 'string');
-  assertExtractType('{searchExp: string, replaceStr: string} | string', 'searchExp');
+  assertExtractType('Anim', ['Anim']);
+  assertExtractType('Any|Object', ['Any', 'Object']);
+  assertExtractType('Any | Object', ['Any', 'Object']);
+  assertExtractType('{Any}', ['Any']);
+  assertExtractType('{ Number }', ['Number']);
+  assertExtractType('{ArrayList|Widget}', ['ArrayList','Widget']); 
+  assertExtractType('{string: boolean}', ['string']);
+  assertExtractType('{Object} the values are HTML strings', ['Object']);
+  assertExtractType('{null}', []);
+  assertExtractType('Object*', ['Object']);
+  assertExtractType('Number | false', ['Number','false']);
+  assertExtractType('Number/false', ['Number','false']);
+  assertExtractType('Number[]', ['Number[]']);
+  assertExtractType('Number[]|Node', ['Number[]','Node']);
+  assertExtractType('string| {searchExp: string, replaceStr: string}', ['string','searchExp']);
+  assertExtractType('{searchExp: string, replaceStr: string} | string', ['searchExp']);
 }
 
 var assertGetPropertyTernType = function (yuiType, expected) {
@@ -107,8 +107,36 @@ exports['test getTernType - YUIClassItem - method with callback'] = function() {
       type: "Number[]"	
     }
   };
-  var type = yuidoc2tern.getTernType(yuiClassItem, yuiDoc);
-  assert.equal(type, 'fn(content: +HTMLElement, options?: +yui.Object, callback?: fn(view: +app.View)) -> !this');
+  var ternDef = {"!define": {}};
+  var type = yuidoc2tern.getTernType(yuiClassItem, yuiDoc, false, ternDef);
+  assert.equal(type, 'fn(content: +HTMLElement|+Node|string, options?: +config.App.ContentShowContentConfig, callback?: fn(view: +app.View)) -> !this');
+  assert.equal(JSON.stringify(ternDef, null, " "), JSON.stringify({
+   "!define": {
+    "config": {
+      "App": {
+        "ContentShowContentConfig": {
+          "view": {
+          "!type": "+Object|string"
+        },
+        "config": {
+         "!type": "+Object"
+        }
+       } 
+      }     
+    }}
+   }, null, " "));
 }
 
+exports['test toTernName'] = function() {
+  // case found inside AlloyUI 1.5.x
+  assertToTernName('@param', 'param');
+  assertToTernName('+', 'arg');
+  assertToTernName('', 'arg');
+  assertToTernName('*callback', 'callback');
+}
+
+var assertToTernName = function (name, expected) {
+  var ternName = yuidoc2tern.toTernName(name);
+  assert.equal(ternName, expected);
+}
 if (module == require.main) require("test").run(exports);

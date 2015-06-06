@@ -51,7 +51,7 @@ exports['test Y.one completion'] = function() {
     "end":{"line":0,"ch":33},
     "isProperty":true,
     "isObjectKey":false,
-    "completions":[{"name":"one","type":"fn(node: string) -> node.Node",
+    "completions":[{"name":"one","type":"fn(node: string|Element) -> node.Node",
     "origin":"yui3"}]
   });
 }
@@ -63,10 +63,10 @@ exports['test !proto completion'] = function() {
       "end":{"line":0,"ch":59},
       "isProperty":true,
       "isObjectKey":false,
-      "completions":[{"name":"parseType","type":"fn(type: string, pre?: string) -> yui.Array","origin":"yui3"},
+      "completions":[{"name":"parseType","type":"fn(type: string, pre?: string) -> [?]","origin":"yui3"},
                      {"name":"pause","type":"fn()", "origin":"yui3"},
                      {"name":"propertyIsEnumerable","type":"fn(prop: string) -> bool", "origin":"ecma5"},
-                     {"name":"publish","type":"fn(type: string, opts: yui.Object) -> event_custom.CustomEvent", "origin":"yui3"}
+                     {"name":"publish","type":"fn(type: string, opts: {}) -> event_custom.CustomEvent", "origin":"yui3"}
                     ]
   });
   //  Anim.anim extends base.Base
