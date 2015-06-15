@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "main": "aui1.5.x.js",
   "author": "Angelo ZERR <angelo.zerr@gmail.com>",
-  "description": "A Tern plugin adding AlloyUI 2.x support.",
+  "description": "A Tern plugin adding AlloyUI 1.5.x support.",
   "repository": {
     "type": "git",
     "url": "git://github.com/angelozerr/tern-aui1.5.x.git"
@@ -14,13 +14,17 @@
   },  
   "dependencies": {
     "tern": ">=0.10.0",
-    "acorn": ">=1.0.0"
+    "acorn": ">=1.0.0",
+    "tern-yui3": ">=0.1.0",
+    "tern-lint": ">=0.2.0"
   },
   "devDependencies": { 
-    "test": ">=0.0.5" 
+    "test": ">=0.0.5",
+    "codemirror": ">=5.3.0"
   },  
   "keywords": [
     "tern",
+    "YUI3",
     "AlloyUI"
   ]
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 var fs = require("fs"), path = require("path"), tern = require("tern"), assert = require('assert');
-require("../yui3.js");
+require("tern-yui3");
 require("../aui1.5.x.js");
 
 var projectDir = path.resolve(__dirname, "..");
